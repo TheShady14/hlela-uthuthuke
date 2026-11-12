@@ -1,17 +1,23 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionHeading } from "@/components/brand/section-heading";
 import { ImageBand } from "@/components/brand/ui-bits";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/motion/reveal";
 import { SERVICE_GROUPS } from "@/lib/site-content";
 import { cn } from "@/lib/utils";
 
+const AUTOPLAY_MS = 5000;
+
 export function Services() {
   const [activeGroup, setActiveGroup] = useState(0);
   const group = SERVICE_GROUPS[activeGroup];
+
+  const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const autoplay = !paused && !reduceMotion;
 
   const move = (direction: number) =>
     setActiveGroup(
@@ -19,20 +25,43 @@ export function Services() {
         (current + direction + SERVICE_GROUPS.length) % SERVICE_GROUPS.length
     );
 
+  useEffect(() => {
+    if (!autoplay) return;
+    const timer = window.setTimeout(() => move(1), AUTOPLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [activeGroup, autoplay]);
+
   return (
-    <section id="services" className="scroll-mt-24 py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <ImageBand path="/images/services-band.jpg" label="Our Services band" />
       <div className="mx-auto mt-12 max-w-7xl px-6 lg:mt-16 lg:px-12">
         <Reveal>
           <SectionHeading eyebrow="04" title="Our Services" />
         </Reveal>
-        <div className="mt-10 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-8 lg:mt-14">
+        <div
+          className="relative mt-10 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-8 lg:mt-14"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+        >
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-0.5 bg-border">
+            <div
+              key={`${activeGroup}-${autoplay}`}
+              className="h-full origin-left bg-maroon"
+              style={
+                autoplay
+                  ? { animation: `service-progress ${AUTOPLAY_MS}ms linear forwards` }
+                  : { transform: "scaleX(0)" }
+              }
+            />
+          </div>
           <div className="flex flex-col gap-6 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="font-display text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                 Service group {activeGroup + 1} of {SERVICE_GROUPS.length}
               </p>
-              <h3 className="mt-2 font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+              <h3 aria-live="polite" className="mt-2 font-serif text-2xl font-bold tracking-tight sm:text-4xl">
                 {group.label}
               </h3>
             </div>
@@ -56,7 +85,7 @@ export function Services() {
             </div>
           </div>
           <div
-            className="mt-5 flex gap-2"
+            className="-mx-5 mt-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0"
             role="tablist"
             aria-label="Service groups"
           >
@@ -68,7 +97,7 @@ export function Services() {
                 aria-selected={index === activeGroup}
                 onClick={() => setActiveGroup(index)}
                 className={cn(
-                  "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
+                  "shrink-0 whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
                   index === activeGroup
                     ? "border-maroon bg-maroon text-maroon-foreground"
                     : "border-border text-muted-foreground hover:text-foreground"

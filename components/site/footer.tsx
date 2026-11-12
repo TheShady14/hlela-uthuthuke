@@ -12,36 +12,38 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-border bg-secondary">
       <DotPattern className="opacity-[0.35] [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-12 lg:py-24">
-        <div className="space-y-16">
-          {/* Brand */}
-          <div className="max-w-3xl">
-            <Link href="/" className="inline-flex">
-              <Image
-                src="/web-logo.png"
-                alt="Hlela Uthuthuke Development Management"
-                width={380}
-                height={120}
-                className="h-auto w-[300px] sm:w-[340px] lg:w-[380px] object-contain"
-                priority
-              />
-            </Link>
+      <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.35fr_0.9fr_1fr_1.2fr] lg:gap-12">
+            {/* Brand */}
+            <div className="sm:col-span-2 lg:col-span-1">
+              <Link
+                href="/"
+                aria-label="Hlela Uthuthuke home"
+                className="inline-flex rounded-xl bg-logo-surface p-2 shadow-sm ring-1 ring-border"
+              >
+                <Image
+                  src="/brand/hlela-logo.png"
+                  alt="Hlela Uthuthuke Development and Planning Solutions logo"
+                  width={1536}
+                  height={1024}
+                  sizes="(min-width: 1024px) 260px, 240px"
+                  className="h-auto w-[240px] lg:w-[260px]"
+                />
+              </Link>
 
-            <p className="mt-7 max-w-2xl text-base leading-8 text-muted-foreground lg:text-lg">
-              Turning property potential into successful developments across
-              South Africa&apos;s public and private property sectors.
-            </p>
-          </div>
+              <p className="mt-6 max-w-sm text-pretty text-base leading-relaxed text-muted-foreground">
+                Turning property potential into successful developments across
+                South Africa&apos;s public and private property sectors.
+              </p>
+            </div>
 
-          {/* Main footer columns */}
-          <div className="grid gap-14 border-t border-border pt-14 sm:grid-cols-3 lg:grid-cols-[1fr_1fr_1.25fr] lg:gap-20">
             {/* Navigate */}
             <div>
-              <h3 className="mb-6 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              <h3 className="mb-5 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                 Navigate
               </h3>
 
-              <ul className="space-y-4">
+              <ul className="flex flex-col gap-3">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <Link
@@ -57,11 +59,11 @@ export function Footer() {
 
             {/* Services */}
             <div>
-              <h3 className="mb-6 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              <h3 className="mb-5 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                 Services
               </h3>
 
-              <ul className="space-y-4">
+              <ul className="flex flex-col gap-3">
                 {ALL_SERVICES.slice(0, 6).map((service) => (
                   <li key={service}>
                     <Link
@@ -77,11 +79,11 @@ export function Footer() {
 
             {/* Contact */}
             <div>
-              <h3 className="mb-6 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+              <h3 className="mb-5 font-display text-sm font-semibold uppercase tracking-[0.15em] text-muted-foreground">
                 Contact
               </h3>
 
-              <ul className="space-y-5 text-base text-foreground/80">
+              <ul className="flex flex-col gap-4 text-base text-foreground/80">
                 <li className="flex items-start gap-4">
                   <MapPin className="mt-1 h-5 w-5 shrink-0 text-maroon" />
 
@@ -118,7 +120,6 @@ export function Footer() {
                 Start a conversation
               </Link>
             </div>
-          </div>
         </div>
 
         {/* Bottom bar */}

@@ -1,10 +1,6 @@
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-/**
- * Placeholder logo: a roofline/house mark + the HLELA UTHUTHUKE wordmark.
- * Swap the mark for /public/logo/logo-mark.svg and the wordmark styling once
- * the real brand assets are supplied (see build brief §8).
- */
 export function Logo({
   className,
   showWordmark = true,
@@ -14,31 +10,22 @@ export function Logo({
 }) {
   return (
     <span className={cn('flex items-center gap-2.5', className)}>
-      <span
+      <Image
+        src="/brand/hlela-icon.svg"
+        alt=""
         aria-hidden="true"
-        className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-maroon text-maroon-foreground"
-      >
-        {/* roofline mark placeholder */}
-        <svg
-          viewBox="0 0 24 24"
-          className="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M3 11.5 12 4l9 7.5" />
-          <path d="M5 10.5V20h14v-9.5" />
-          <path d="M10 20v-5h4v5" />
-        </svg>
-      </span>
+        width={48}
+        height={40}
+        className="h-9 w-auto shrink-0 sm:h-10"
+        priority
+      />
       {showWordmark ? (
         <span className="flex flex-col leading-none">
-          <span className="font-display text-base font-bold uppercase tracking-tight">
-            Hlela Uthuthuke
+          <span className="font-display text-sm font-bold uppercase tracking-tight sm:text-base">
+            <span className="text-brand-hlela">Hlela</span>{' '}
+            <span className="text-brand-uthuthuke">Uthuthuke</span>
           </span>
-          <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="mt-1 text-[9px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px]">
             Development Management
           </span>
         </span>

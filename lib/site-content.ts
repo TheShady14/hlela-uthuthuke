@@ -238,18 +238,66 @@ export const ALL_SERVICES = SERVICE_GROUPS.flatMap((g) =>
 );
 
 export const INDUSTRIES = [
-  "Affordable Housing",
-  "Social Housing",
-  "Residential Developments",
-  "Mixed-Use Developments",
-  "Commercial Property",
-  "Retail Developments",
-  "Industrial Developments",
-  "Student Accommodation",
-  "Public Infrastructure",
-  "Urban Regeneration",
-  "Precinct Development",
-  "Municipal and Government Infrastructure Projects",
+  {
+    title: "Affordable Housing",
+    description:
+      "Well-built homes priced for first-time and lower-income buyers, often supported by subsidies such as FLISP or BNG programmes.",
+  },
+  {
+    title: "Social Housing",
+    description:
+      "Subsidised rental housing managed by accredited institutions, providing secure, quality homes close to jobs and transport.",
+  },
+  {
+    title: "Residential Developments",
+    description:
+      "Estates, townhouse complexes and apartment schemes for sale or rental, from land assembly to final hand-over.",
+  },
+  {
+    title: "Mixed-Use Developments",
+    description:
+      "Projects combining homes, shops, offices and public space in one scheme to create vibrant, walkable neighbourhoods.",
+  },
+  {
+    title: "Commercial Property",
+    description:
+      "Office parks, corporate headquarters and business premises designed around tenant demand and long-term investment value.",
+  },
+  {
+    title: "Retail Developments",
+    description:
+      "Shopping centres, convenience nodes and community retail anchored by the right tenant mix for the catchment.",
+  },
+  {
+    title: "Industrial Developments",
+    description:
+      "Warehousing, logistics hubs and light-industrial parks positioned for access, power and efficient operations.",
+  },
+  {
+    title: "Student Accommodation",
+    description:
+      "Purpose-built student residences near campuses, meeting accreditation standards for safety, study and community living.",
+  },
+  {
+    title: "Public Infrastructure",
+    description:
+      "Roads, bulk services, community facilities and other public assets that unlock land and support growing communities.",
+  },
+  {
+    title: "Urban Regeneration",
+    description:
+      "Revitalising under-used or declining areas through new investment, adaptive reuse and improved public spaces.",
+  },
+  {
+    title: "Precinct Development",
+    description:
+      "Coordinated, multi-site planning of a defined area so buildings, streets and services work together as one place.",
+  },
+  {
+    title: "Municipal and Government Infrastructure Projects",
+    description:
+      "Public sector programmes delivered in line with procurement, compliance and funding requirements, on time and on budget.",
+  },
 ] as const;
 
 export const WHY_HLELA = [

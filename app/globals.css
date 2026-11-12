@@ -29,6 +29,9 @@
   --color-maroon-foreground: var(--maroon-foreground);
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
+  --color-brand-hlela: var(--brand-hlela);
+  --color-brand-uthuthuke: var(--brand-uthuthuke);
+  --color-logo-surface: var(--logo-surface);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-lora), ui-serif, Georgia, serif;
@@ -43,58 +46,66 @@
 
 :root {
   color-scheme: light;
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
+  --background: #f5efe6;
+  --foreground: #1f2229;
+  --card: #fbf8f3;
+  --card-foreground: #1f2229;
+  --popover: #fbf8f3;
+  --popover-foreground: #1f2229;
   --primary: #7a2338;
   --primary-foreground: #ffffff;
-  --secondary: #f4f2f0;
-  --secondary-foreground: #1a1a1a;
-  --muted: #f2f1ee;
-  --muted-foreground: #5c6470;
-  --accent: #eef0f4;
-  --accent-foreground: #1a1a1a;
+  --secondary: #ede5d8;
+  --secondary-foreground: #1f2229;
+  --muted: #ece4d7;
+  --muted-foreground: #5a5f6a;
+  --accent: #e9e1d4;
+  --accent-foreground: #1f2229;
   --destructive: #b3261e;
-  --border: #e4e2df;
-  --input: #e4e2df;
+  --border: #ddd2c1;
+  --input: #ddd2c1;
   --ring: #7a2338;
 
   --maroon: #7a2338;
   --maroon-foreground: #ffffff;
-  --navy: #4a5970;
+  --navy: #3d4f6b;
   --navy-foreground: #ffffff;
+
+  --brand-hlela: #1d3858;
+  --brand-uthuthuke: #a0002b;
+  --logo-surface: #ffffff;
 
   --radius: 0.625rem;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #12151b;
+  --background: #2f3137;
   --foreground: #f2f1ee;
-  --card: #191d25;
+  --card: #383a41;
   --card-foreground: #f2f1ee;
-  --popover: #191d25;
+  --popover: #383a41;
   --popover-foreground: #f2f1ee;
-  --primary: #b8536b;
-  --primary-foreground: #12151b;
-  --secondary: #20242d;
+  --primary: #e3849a;
+  --primary-foreground: #2f3137;
+  --secondary: #34363d;
   --secondary-foreground: #f2f1ee;
-  --muted: #1c212a;
-  --muted-foreground: #9aa3b2;
-  --accent: #20242d;
+  --muted: #3b3e45;
+  --muted-foreground: #b6bac2;
+  --accent: #3b3e45;
   --accent-foreground: #f2f1ee;
-  --destructive: #e5675f;
-  --border: #2a2f3a;
-  --input: #2a2f3a;
-  --ring: #b8536b;
+  --destructive: #f0857e;
+  --border: #4b4e56;
+  --input: #4b4e56;
+  --ring: #e3849a;
 
-  --maroon: #c05f77;
-  --maroon-foreground: #ffffff;
-  --navy: #7d8eaa;
-  --navy-foreground: #12151b;
+  --maroon: #e3849a;
+  --maroon-foreground: #2f3137;
+  --navy: #a3b4d0;
+  --navy-foreground: #2f3137;
+
+  --brand-hlela: #a9bcdb;
+  --brand-uthuthuke: #f08aa0;
+  --logo-surface: #ffffff;
 }
 
 @layer base {
@@ -123,10 +134,46 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Border beam keyframes (team cards / CTA) */
+/* Border beam: a 1px rotating gradient ring that only paints the border area */
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 @keyframes border-beam {
   to {
-    offset-distance: 100%;
+    --beam-angle: 360deg;
+  }
+}
+
+.border-beam {
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg,
+    transparent 250deg,
+    var(--color-navy) 300deg,
+    var(--color-maroon) 350deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  animation: border-beam var(--beam-duration, 6s) linear infinite;
+}
+
+/* Services auto-advance progress bar */
+@keyframes service-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -143,5 +190,4 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
 }
