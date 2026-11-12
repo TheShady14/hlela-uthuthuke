@@ -136,7 +136,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[60] border-b transition-all duration-300",
+        "nav-light fixed inset-x-0 top-0 z-[60] border-b text-foreground transition-all duration-300",
         scrolled
           ? [
               "border-border/70",
