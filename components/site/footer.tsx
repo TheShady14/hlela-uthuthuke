@@ -9,7 +9,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-secondary">
+    <footer className="nav-light relative overflow-hidden border-t border-border bg-secondary text-foreground dark:bg-background">
       <DotPattern className="opacity-[0.35] [mask-image:radial-gradient(60%_60%_at_50%_0%,black,transparent)]" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-12 lg:py-20">
