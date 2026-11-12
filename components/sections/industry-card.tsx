@@ -79,14 +79,12 @@ export function IndustryCard({
 
       <p className="mt-6 font-display text-lg font-semibold leading-snug text-foreground text-balance">{title}</p>
 
-      <div
+      <p
         id={descriptionId}
-        className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr] group-data-[open=true]:grid-rows-[1fr]"
+        className="mt-2 translate-y-1 text-sm leading-relaxed text-muted-foreground opacity-0 transition-[opacity,transform] duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 group-data-[open=true]:translate-y-0 group-data-[open=true]:opacity-100 motion-reduce:transition-none"
       >
-        <p className="overflow-hidden text-sm leading-relaxed text-muted-foreground">
-          <span className="block pt-2">{description}</span>
-        </p>
-      </div>
+        {description}
+      </p>
     </button>
   )
 }
