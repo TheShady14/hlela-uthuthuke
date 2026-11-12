@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { CtaButton } from "@/components/brand/ui-bits";
 import { DotPattern } from "@/components/motion/dot-pattern";
@@ -114,22 +115,27 @@ export function Hero() {
           <div className="relative overflow-hidden rounded-2xl border border-border bg-muted shadow-xl">
             <div className="relative aspect-[4/3] overflow-hidden">
               <AnimatePresence mode="wait">
-                <motion.img
+                <motion.div
                   key={SLIDES[slide].path}
-                  src={SLIDES[slide].path}
-                  alt={SLIDES[slide].label}
-                  onError={(event) => {
-                    if (event.currentTarget.dataset.fallback) return;
-                    event.currentTarget.dataset.fallback = "true";
-                    event.currentTarget.src =
-                      "/placeholder.svg?height=900&width=1200";
-                  }}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  initial={reduce ? false : { opacity: 0, scale: 1.04 }}
+                  className="absolute inset-0"
+                  initial={
+                    reduce || slide === 0 ? false : { opacity: 0, scale: 1.04 }
+                  }
                   animate={{ opacity: 1, scale: 1 }}
                   exit={reduce ? undefined : { opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                />
+                >
+                  <Image
+                    src={SLIDES[slide].path}
+                    alt={SLIDES[slide].label}
+                    fill
+                    priority={slide === 0}
+                    fetchPriority={slide === 0 ? "high" : "auto"}
+                    quality={75}
+                    sizes="(min-width: 1280px) 700px, (min-width: 1024px) 55vw, 100vw"
+                    className="object-cover"
+                  />
+                </motion.div>
               </AnimatePresence>
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-foreground/75 to-transparent p-5 pt-16 text-background">
                 <p className="font-display text-xs font-semibold uppercase tracking-[0.16em]">

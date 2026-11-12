@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function PlaceholderImage({
@@ -5,19 +6,26 @@ export function PlaceholderImage({
   label,
   className,
   rounded = "none",
+  priority = false,
+  sizes = "100vw",
 }: {
   path: string;
   label?: string;
   className?: string;
   rounded?: "none" | "lg" | "xl";
   priority?: boolean;
+  sizes?: string;
 }) {
   return (
-    <img
+    <Image
       src={path}
       alt={label ?? ""}
+      fill
+      sizes={sizes}
+      priority={priority}
+      quality={70}
       className={cn(
-        "h-full w-full object-cover",
+        "object-cover",
         rounded === "lg" && "rounded-lg",
         rounded === "xl" && "rounded-xl",
         className

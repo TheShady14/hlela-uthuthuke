@@ -8,9 +8,10 @@ import { Navbar } from "@/components/site/navbar";
 import { CONTACT } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Contact | Hlela Uthuthuke",
+  title: "Contact",
   description:
     "Get in touch with Hlela Uthuthuke Development Management to discuss your property development or advisory requirements.",
+  alternates: { canonical: "/contact" },
 };
 
 const DETAILS = [
@@ -45,6 +46,7 @@ export default function ContactPage() {
             <PlaceholderImage
               path="/images/why-hlela-band.jpg"
               label="Contact header band"
+              priority
             />
           </div>
           <div className="mx-auto max-w-7xl px-6 pt-10 lg:px-12">
