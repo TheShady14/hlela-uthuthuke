@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { Logo } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -15,6 +16,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const pathname = usePathname();
   const onHome = pathname === "/";
@@ -242,7 +246,9 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile / tablet drawer */}
+      {/* Portaled to <body>: the scrolled header's backdrop-blur creates a
+          containing block that would otherwise trap this fixed drawer. */}
+      {mounted && createPortal(
       <AnimatePresence>
         {open && (
           <motion.div
@@ -389,7 +395,9 @@ export function Navbar() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </header>
   );
 }

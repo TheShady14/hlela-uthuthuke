@@ -1,7 +1,7 @@
 export const CONTACT = {
   address: "542 Karee Drive, Bassonia Estate, 2190",
-  phone: "+27 00 000 0000",
-  phoneHref: "tel:+2700000000",
+  phone: "+27 83 563 1605",
+  phoneHref: "tel:+27835631605",
   email: "emily@hlelauthuthuke.co.za",
   domain: "hlelauthuthuke.co.za",
   mapEmbed:
