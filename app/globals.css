@@ -79,33 +79,61 @@
 
 .dark {
   color-scheme: dark;
-  --background: #2f3137;
-  --foreground: #f2f1ee;
-  --card: #383a41;
-  --card-foreground: #f2f1ee;
-  --popover: #383a41;
-  --popover-foreground: #f2f1ee;
-  --primary: #e3849a;
+  --background: #4f525a;
+  --foreground: #f4f3f0;
+  --card: #5a5d66;
+  --card-foreground: #f4f3f0;
+  --popover: #5a5d66;
+  --popover-foreground: #f4f3f0;
+  --primary: #f0a3b4;
   --primary-foreground: #2f3137;
-  --secondary: #34363d;
-  --secondary-foreground: #f2f1ee;
-  --muted: #3b3e45;
-  --muted-foreground: #b6bac2;
-  --accent: #3b3e45;
-  --accent-foreground: #f2f1ee;
-  --destructive: #f0857e;
-  --border: #4b4e56;
-  --input: #4b4e56;
-  --ring: #e3849a;
+  --secondary: #4a4d55;
+  --secondary-foreground: #f4f3f0;
+  --muted: #5d6069;
+  --muted-foreground: #d3d6dc;
+  --accent: #5d6069;
+  --accent-foreground: #f4f3f0;
+  --destructive: #f6a39d;
+  --border: #6c6f78;
+  --input: #6c6f78;
+  --ring: #f0a3b4;
 
-  --maroon: #e3849a;
+  --maroon: #f0a3b4;
   --maroon-foreground: #2f3137;
-  --navy: #a3b4d0;
+  --navy: #bfcde3;
   --navy-foreground: #2f3137;
 
-  --brand-hlela: #a9bcdb;
-  --brand-uthuthuke: #f08aa0;
+  --brand-hlela: #c3d2ea;
+  --brand-uthuthuke: #f5a6b7;
   --logo-surface: #ffffff;
+}
+
+/* Light navbar surface in dark mode: re-scope tokens to the light palette */
+.dark .nav-light {
+  color-scheme: light;
+  --background: #eef0f3;
+  --foreground: #1f2229;
+  --card: #f7f8fa;
+  --card-foreground: #1f2229;
+  --popover: #f7f8fa;
+  --popover-foreground: #1f2229;
+  --primary: #7a2338;
+  --primary-foreground: #ffffff;
+  --secondary: #e4e7ec;
+  --secondary-foreground: #1f2229;
+  --muted: #e4e7ec;
+  --muted-foreground: #5a5f6a;
+  --accent: #e4e7ec;
+  --accent-foreground: #1f2229;
+  --border: #d3d7de;
+  --input: #d3d7de;
+  --ring: #7a2338;
+  --maroon: #7a2338;
+  --maroon-foreground: #ffffff;
+  --navy: #3d4f6b;
+  --navy-foreground: #ffffff;
+  --brand-hlela: #1d3858;
+  --brand-uthuthuke: #a0002b;
 }
 
 @layer base {

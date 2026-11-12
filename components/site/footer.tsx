@@ -19,13 +19,13 @@ export function Footer() {
               <Link
                 href="/"
                 aria-label="Hlela Uthuthuke home"
-                className="inline-flex rounded-xl bg-logo-surface p-2 shadow-sm ring-1 ring-border"
+                className="inline-flex rounded-lg"
               >
                 <Image
                   src="/brand/hlela-logo.png"
                   alt="Hlela Uthuthuke Development and Planning Solutions logo"
-                  width={1536}
-                  height={1024}
+                  width={1325}
+                  height={856}
                   sizes="(min-width: 1024px) 260px, 240px"
                   className="h-auto w-[240px] lg:w-[260px]"
                 />
