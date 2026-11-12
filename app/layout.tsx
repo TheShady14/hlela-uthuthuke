@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   description:
     'Hlela Uthuthuke is a South African specialist property development management and advisory firm, turning property potential into successful developments.',
   generator: 'v0.app',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Hlela Uthuthuke | Development Management & Advisory',
     description:
@@ -38,8 +42,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#12151b' },
+    { media: '(prefers-color-scheme: light)', color: '#f5efe6' },
+    { media: '(prefers-color-scheme: dark)', color: '#2f3137' },
   ],
 }
 

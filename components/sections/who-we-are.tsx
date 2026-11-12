@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export function WhoWeAre() {
   return (
-    <section id="who-we-are" className="scroll-mt-24 py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <ImageBand path="/images/who-we-are.jpg" label="Who We Are band" />
 
       <div className="mx-auto mt-12 max-w-7xl px-6 lg:mt-16 lg:px-12">

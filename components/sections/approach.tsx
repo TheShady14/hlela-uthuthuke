@@ -22,7 +22,7 @@ export function Approach() {
   });
 
   return (
-    <section id="approach" className="scroll-mt-24 py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <ImageBand path="/images/approach-band.jpg" label="Our Approach band" />
 
       <div className="mx-auto mt-12 max-w-7xl px-6 lg:mt-16 lg:px-12">

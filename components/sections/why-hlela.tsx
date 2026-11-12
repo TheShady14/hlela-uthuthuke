@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function WhyHlela() {
   return (
-    <section id="why-hlela" className="scroll-mt-24 py-20 lg:py-28">
+    <section className="py-20 lg:py-28">
       <ImageBand
         path="/images/contact-band.jpg"
         label="Why Hlela band (rooftop garden)"
